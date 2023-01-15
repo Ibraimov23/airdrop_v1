@@ -1,0 +1,1 @@
+export { AirdropPage } from './Airdrop-page';

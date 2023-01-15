@@ -1,0 +1,1 @@
+export { LandFooter } from './Footer';
