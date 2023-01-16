@@ -35,7 +35,6 @@ static async success(tokenAddress) {
 
 static async getAmount(contract_address,USDTokenAddress,sell) {
     const data = await SC.swapInst.methods.getAmountsOut(sell, [contract_address ,USDTokenAddress]).call();
-    console.log(data)
     return data;
 }
 static async getBalance(address) {

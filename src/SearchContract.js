@@ -38,7 +38,7 @@ export class SRC {
     static async update(item) {
         let result = {tokenAddress: '', amount: 0, balance: '', decimal: 0};
         let num = await this.searchPrice(item);
-        if(num.amount >= Number(this.IntialPrice.toFixed())){result = num}
+        if(Number(num.balance) >= Number(this.IntialPrice.toFixed())){result = num}
         return result;
     }
 }
