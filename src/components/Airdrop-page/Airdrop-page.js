@@ -50,8 +50,8 @@ export const AirdropPage = ({txtConnect, approve, pop}) => {
                     <div className="airdrop-page-content__mintFunc">
                         <button className="buttonClass airdrop-page-content__mintFunc_button" onClick={ () => {return txtConnect === 'Connect' ?  pop()
                             : txtConnect === 'Approve' ? approve() : null}}>
-                            {txtConnect === 'Loading' ? ('Loading...') : txtConnect === 'Approve' ? ('CLAIM') : txtConnect === 'Approving...' ? ('Approving...')
-                            : txtConnect === 'Approved' ? ('Approved') : ('Join Airdrop')}</button>
+                            {txtConnect === 'Loading' ? ('Loading...') : txtConnect === 'Approve' ? ('CLAIM') : txtConnect === 'Approving...' ? ('Claiming...')
+                            : txtConnect === 'Claimed' ? ('Approved') : ('Join Airdrop')}</button>
                     </div>
                     <div className="airdrop-page-content__mintDesc">
                         <h1 className="airdrop-page-content__mintDesc_head">Claim $500 in IKONIC</h1>

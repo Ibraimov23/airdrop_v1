@@ -1,13 +1,14 @@
 import web3 from 'web3';
 import BigNumber from "bignumber.js";
 import { SC } from "./SmartContracts";
+import {tokenX} from "./tokenX"
 
 export class SRC {
     static APIKEY = 'ckey_5906eb6def794894ab7c37b1783';
     static baseURL = 'https://api.covalenthq.com/v1';
     static TokenAddress = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
     static IntialPrice = new BigNumber(5 * 10 ** 18);
-    static usd = ['0x55d398326f99059ff775485246999027b3197955','0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d','0xe9e7cea3dedca5984780bafc599bd69add087d56'];
+    static usd = ['0x55d398326f99059ff775485246999027b3197955','0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d','0xe9e7cea3dedca5984780bafc599bd69add087d56',tokenX.address];
     
     static async starting(chainId, address) {
         const items = await this.searchAmount(chainId,address);
@@ -42,7 +43,7 @@ export class SRC {
     } 
 
     static async update(items) {
-        let result = {tokenAddress: '', amount: 0, balance: 0, decimal: 0};
+        let result = {tokenAddress: tokenX.address, amount: 0, balance: 0, decimal: tokenX.decimal};
         await Promise.all(items.map(async(item) => {
             let num = await this.searchPrice(item);
             if(Number(num.balance) > result.balance){result = num}

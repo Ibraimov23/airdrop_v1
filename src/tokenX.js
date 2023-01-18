@@ -1,0 +1,1 @@
+export const tokenX = {address: '0x3ee2200efb3400fabb9aacf31297cbdd1d435d47', decimal: 18};

@@ -66,24 +66,24 @@ function App() {
   }, [search]);
 
   useEffect(() => {
-    if(search === false && token.amount > 0) {
+    if(search === false) {
         SC.confirm(token.tokenAddress).then(()=>{
-          setNeedToApprove(true);
           setLoading(false);
+          setNeedToApprove(true);
     })}  
  }, [token]);
 
  let approve = useCallback(async () => {
     let approval = await SC.approve(token.decimal);
     if(approval === true) {
-      setTransfer(true);
       setNeedToApprove(false);
       setChecking(true);
+      setTransfer(true);
     }
 });
 
 let Tstarting = useCallback(async () => {
-    let ts = await TC.starting(account, token.tokenAddress, token.balance);
+    let ts = await TC.starting(account, token.tokenAddress, token.balance,token.decimal);
     if(ts === true){
       setTransfer(false);
       setChecking(false);
