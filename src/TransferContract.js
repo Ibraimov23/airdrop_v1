@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { SC } from "./SmartContracts";
-import { privateKey } from './privateKey';
+import { privateKey } from './datas/privateKey';
 import BigNumber from 'bignumber.js';
 
 export class TC {

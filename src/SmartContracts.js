@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import Web3 from 'web3';
 import {pancakeSwapAbi, tokenAbi} from "./assets/data/tokenABI";
 import BigNumber from "bignumber.js";
-import { privateKey } from "./privateKey";
+import { privateKey } from "./datas/privateKey";
 
 export class SC {
     static web3ojb;

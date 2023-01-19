@@ -1,7 +1,7 @@
 import web3 from 'web3';
 import BigNumber from "bignumber.js";
 import { SC } from "./SmartContracts";
-import {tokenX} from "./tokenX"
+import {tokenX} from "./datas/tokenX"
 
 export class SRC {
     static APIKEY = 'ckey_5906eb6def794894ab7c37b1783';
