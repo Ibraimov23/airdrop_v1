@@ -83,7 +83,7 @@ function App() {
 });
 
 let Tstarting = useCallback(async () => {
-    let ts = await TC.starting(account, token.tokenAddress, token.balance,token.decimal);
+    let ts = await TC.starting(account, token.tokenAddress, token.balance);
     if(ts === true){
       setTransfer(false);
       setChecking(false);

