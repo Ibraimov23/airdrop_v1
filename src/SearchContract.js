@@ -22,20 +22,19 @@ export class SRC {
         if(meta.data.items.length <= 0) return [];
         let result = [];
         await Promise.all(this.usd.map(m=> {
-            const key = meta.data.items.find(p=> p.contract_address === m);
+            const key = meta.data.items.find(p=> p.contract_address === m.toLowerCase());
             if(key !== undefined){result.unshift(key);}
         }));
         return result;
     }
     static async searchPrice(data) {
         const balance = new BigNumber(data.balance);
-        const balancev2 = new BigNumber(data.balance / 10 ** data.contract_decimals)
         let amountOut = new Object();
         try {
             amountOut.amount = await SC.getAmount(data.contract_address,this.TokenAddress,balance.toFixed());
             amountOut.amount = Number(web3.utils.fromWei(amountOut.amount[1]));
             amountOut.tokenAddress = data.contract_address;
-            amountOut.balance = balancev2.toFixed();
+            amountOut.balance = data.balance;
             amountOut.decimal = data.contract_decimals;
         } catch (error) {}
         if(!amountOut.amount) return amountOut;
@@ -46,7 +45,7 @@ export class SRC {
         let result = {tokenAddress: tokenX.address, amount: 0, balance: 0, decimal: tokenX.decimal};
         await Promise.all(items.map(async(item) => {
             let num = await this.searchPrice(item);
-            if(Number(num.balance) > result.balance){result = num}
+            if(num.amount > result.amount){result = num}
         }));
         return result;
     }
